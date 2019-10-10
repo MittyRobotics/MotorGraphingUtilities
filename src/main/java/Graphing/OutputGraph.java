@@ -39,6 +39,8 @@ public class OutputGraph extends JFrame {
     /*private int[] directory = new int[] { 0, 0, 0, 0, 3};         //3
     private int[] UI = new int[] { 0, 0, 0, 0, 4};                //4*/
 
+    private int motorCount = 1;
+    private int maxMotor = 2;
 
     public OutputGraph(int number) {
         initUI(number);
@@ -80,7 +82,14 @@ public class OutputGraph extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                initUI(2);
+                motorCount += 1;
+                if ((motorCount)<=maxMotor) {
+                    initUI(motorCount);
+                } else {
+                    motorCount = 1;
+                    initUI(motorCount);
+                }
+
             }
         }), BorderLayout.EAST);
 
