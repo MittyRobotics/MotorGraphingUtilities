@@ -1,5 +1,6 @@
 package Graphing;
 
+import javafx.scene.chart.Chart;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -159,6 +160,18 @@ public class OutputGraph extends JFrame {
             add(Charts10);
         }
 
+        JPanel jPan = new JPanel();
+        JCheckBox velocityCheckbox = new JCheckBox("Velocity", true);
+        jPan.add(velocityCheckbox);
+        JCheckBox positionCheckbox = new JCheckBox("Position", false);
+        jPan.add(positionCheckbox);
+        JCheckBox setpointCheckbox = new JCheckBox("Setpoint", true);
+        jPan.add(setpointCheckbox);
+        JCheckBox errorCheckbox = new JCheckBox("Error", false);
+        jPan.add(errorCheckbox);
+        JCheckBox currentCheckbox = new JCheckBox("Current", true);
+        jPan.add(currentCheckbox);
+        add(jPan, BorderLayout.NORTH);
 
         add(new JButton(new AbstractAction("Previous Motor") {
 
