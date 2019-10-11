@@ -17,6 +17,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -162,16 +163,72 @@ public class OutputGraph extends JFrame {
 
         JPanel jPan = new JPanel();
         JCheckBox velocityCheckbox = new JCheckBox("Velocity", true);
+        velocityCheckbox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                JCheckBox cb = (JCheckBox) event.getSource();
+                if (cb.isSelected()) {
+                    System.out.println("vel selected");
+                } else {
+                    System.out.println("vel deselected");
+                }
+            }
+        });
         jPan.add(velocityCheckbox);
         JCheckBox positionCheckbox = new JCheckBox("Position", false);
+        positionCheckbox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                JCheckBox cb = (JCheckBox) event.getSource();
+                if (cb.isSelected()) {
+                    System.out.println("pos selected");
+                } else {
+                    System.out.println("pos deselected");
+                }
+            }
+        });
         jPan.add(positionCheckbox);
         JCheckBox setpointCheckbox = new JCheckBox("Setpoint", true);
+        setpointCheckbox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                JCheckBox cb = (JCheckBox) event.getSource();
+                if (cb.isSelected()) {
+                    System.out.println("set selected");
+                } else {
+                    System.out.println("set deselected");
+                }
+            }
+        });
         jPan.add(setpointCheckbox);
         JCheckBox errorCheckbox = new JCheckBox("Error", false);
+        errorCheckbox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                JCheckBox cb = (JCheckBox) event.getSource();
+                if (cb.isSelected()) {
+                    System.out.println("err selected");
+                } else {
+                    System.out.println("err deselected");
+                }
+            }
+        });
         jPan.add(errorCheckbox);
         JCheckBox currentCheckbox = new JCheckBox("Current", true);
+        currentCheckbox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                JCheckBox cb = (JCheckBox) event.getSource();
+                if (cb.isSelected()) {
+                    System.out.println("curr selected");
+                } else {
+                    System.out.println("curr deselected");
+                }
+            }
+        });
         jPan.add(currentCheckbox);
         add(jPan, BorderLayout.NORTH);
+
 
         add(new JButton(new AbstractAction("Previous Motor") {
 
