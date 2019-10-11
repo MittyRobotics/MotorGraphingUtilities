@@ -32,7 +32,7 @@ public class OutputGraph extends JFrame {
     private Color Grey = new Color(78, 78, 78);
 
     //Velocity Position Setpoint Error Current
-    private boolean[] robotValues = new boolean[] {true, false, true, false, true};
+    private boolean[] robotValues = new boolean[] {true, true, true, true, true};
 
     // Chart Locations and Names
     private int[] Chart1 = new int[] { 15, 15, 15, 15, 1};    //1
@@ -168,21 +168,29 @@ public class OutputGraph extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 JCheckBox cb = (JCheckBox) event.getSource();
                 if (cb.isSelected()) {
+                    robotValues[0] = true;
+                    initUI(number);
                     System.out.println("vel selected");
                 } else {
+                    robotValues[0] = false;
+                    initUI(number);
                     System.out.println("vel deselected");
                 }
             }
         });
         jPan.add(velocityCheckbox);
-        JCheckBox positionCheckbox = new JCheckBox("Position", false);
+        JCheckBox positionCheckbox = new JCheckBox("Position", true);
         positionCheckbox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
                 JCheckBox cb = (JCheckBox) event.getSource();
                 if (cb.isSelected()) {
+                    robotValues[1] = true;
+                    initUI(number);
                     System.out.println("pos selected");
                 } else {
+                    robotValues[1] = false;
+                    initUI(number);
                     System.out.println("pos deselected");
                 }
             }
@@ -194,21 +202,29 @@ public class OutputGraph extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 JCheckBox cb = (JCheckBox) event.getSource();
                 if (cb.isSelected()) {
+                    robotValues[2] = true;
+                    initUI(number);
                     System.out.println("set selected");
                 } else {
+                    robotValues[2] = false;
+                    initUI(number);
                     System.out.println("set deselected");
                 }
             }
         });
         jPan.add(setpointCheckbox);
-        JCheckBox errorCheckbox = new JCheckBox("Error", false);
+        JCheckBox errorCheckbox = new JCheckBox("Error", true);
         errorCheckbox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
                 JCheckBox cb = (JCheckBox) event.getSource();
                 if (cb.isSelected()) {
+                    robotValues[3] = true;
+                    initUI(number);
                     System.out.println("err selected");
                 } else {
+                    robotValues[3] = false;
+                    initUI(number);
                     System.out.println("err deselected");
                 }
             }
@@ -220,8 +236,12 @@ public class OutputGraph extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 JCheckBox cb = (JCheckBox) event.getSource();
                 if (cb.isSelected()) {
+                    robotValues[4] = true;
+                    initUI(number);
                     System.out.println("curr selected");
                 } else {
+                    robotValues[4] = false;
+                    initUI(number);
                     System.out.println("curr deselected");
                 }
             }
@@ -282,40 +302,40 @@ public class OutputGraph extends JFrame {
             series.addOrUpdate(20, 612);
             series.addOrUpdate(25, 800);
             series.addOrUpdate(30, 980);
-            series.addOrUpdate(40, 1410);
-            series.addOrUpdate(50, 2350);
+            series.addOrUpdate(40, 112);
+            series.addOrUpdate(50, 324);
 
-            series1.add(18, 567);
+            series1.add(18, 537);
             series1.add(20, 612);
             series1.add(25, 800);
             series1.add(30, 980);
             series1.add(40, 141);
             series1.add(50, 235);
 
-            series2.add(18, 141);
-            series2.add(20, 290);
-            series2.add(25, 143);
-            series2.add(30, 624);
-            series2.add(40, 786);
-            series2.add(50, 94);
+            series2.add(10, 241);
+            series2.add(20, 160);
+            series2.add(35, 123);
+            series2.add(40, 594);
+            series2.add(45, 687);
+            series2.add(50, 84);
 
-            series3.add(18, 734);
-            series3.add(20, 785);
-            series3.add(25, 145);
-            series3.add(30, 806);
-            series3.add(40, 145);
-            series3.add(50, 0);
+            series3.add(12, 743);
+            series3.add(23, 845);
+            series3.add(28, 234);
+            series3.add(34, 643);
+            series3.add(45, 123);
+            series3.add(50, 52);
 
-            series4.add(18, 245);
-            series4.add(20, 875);
-            series4.add(25, 241);
-            series4.add(30, 134);
-            series4.add(40, 141);
-            series4.add(50, 1);
+            series4.add(18, 235);
+            series4.add(20, 123);
+            series4.add(25, 254);
+            series4.add(30, 654);
+            series4.add(40, 21);
+            series4.add(50, 234);
 
         }
 
-        if (number >= 2){ //TODO replace with getting values from file later
+        if (number == 2){ //TODO replace with getting values from file later
 
             series.addOrUpdate(18, 123);
             series.addOrUpdate(20, 874);
@@ -331,26 +351,65 @@ public class OutputGraph extends JFrame {
             series1.add(40, 1092);
             series1.add(50, 2452);
 
-            series2.add(18, 133);
-            series2.add(20, 654);
-            series2.add(25, 984);
-            series2.add(30, 938);
-            series2.add(40, 74);
-            series2.add(50, 454);
+            series2.add(18, 233);
+            series2.add(20, 344);
+            series2.add(25, 244);
+            series2.add(30, 534);
+            series2.add(40, 24);
+            series2.add(50, 243);
 
-            series3.add(18, 424);
-            series3.add(20, 985);
-            series3.add(25, 123);
-            series3.add(30, 345);
-            series3.add(40, 567);
-            series3.add(50, 0);
+            series3.add(18, 123);
+            series3.add(20, 432);
+            series3.add(25, 54);
+            series3.add(30, 12);
+            series3.add(40, 67);
+            series3.add(50, 645);
 
-            series4.add(18, 324);
-            series4.add(20, 76);
-            series4.add(25, 123);
-            series4.add(30, 876);
-            series4.add(40, 342);
-            series4.add(50, 912);
+            series4.add(18, 323);
+            series4.add(20, 643);
+            series4.add(25, 64);
+            series4.add(30, 836);
+            series4.add(40, 123);
+            series4.add(50, 943);
+
+        }
+
+        if (number > 2){ //TODO replace with getting values from file later
+
+            series.addOrUpdate(18, 123);
+            series.addOrUpdate(20, 874);
+            series.addOrUpdate(25, 234);
+            series.addOrUpdate(30, 91);
+            series.addOrUpdate(40, 101);
+            series.addOrUpdate(50, 2002);
+
+            series1.add(18, 134);
+            series1.add(20, 244);
+            series1.add(25, 948);
+            series1.add(30, 2091);
+            series1.add(40, 1092);
+            series1.add(50, 2452);
+
+            series2.add(18, 233);
+            series2.add(20, 344);
+            series2.add(25, 244);
+            series2.add(30, 534);
+            series2.add(40, 24);
+            series2.add(50, 223);
+
+            series3.add(18, 123);
+            series3.add(20, 432);
+            series3.add(25, 54);
+            series3.add(30, 12);
+            series3.add(40, 67);
+            series3.add(50, 645);
+
+            series4.add(18, 323);
+            series4.add(20, 643);
+            series4.add(25, 64);
+            series4.add(30, 836);
+            series4.add(40, 123);
+            series4.add(50, 943);
 
         }
 
