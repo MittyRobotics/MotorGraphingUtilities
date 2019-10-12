@@ -1,6 +1,6 @@
 package Graphing;
 
-import javafx.scene.chart.Chart;
+//import javafx.scene.chart.Chart;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -883,4 +883,5 @@ public class OutputGraph extends JFrame {
             ex.setVisible(true);
         });
     }
+}
 }
