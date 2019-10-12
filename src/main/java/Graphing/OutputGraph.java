@@ -884,4 +884,3 @@ public class OutputGraph extends JFrame {
         });
     }
 }
-}
