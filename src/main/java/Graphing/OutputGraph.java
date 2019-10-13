@@ -15,6 +15,7 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,6 +27,8 @@ import java.util.Scanner;
 //Tanay Birader (That's why it works)
 
 public class OutputGraph extends JFrame {
+
+    public static int number = 1;
 
     // Colors
     private Color TkoTeal = new Color(90, 199, 217);
@@ -162,6 +165,22 @@ public class OutputGraph extends JFrame {
         }
 
         JPanel jPan = new JPanel();
+
+        JButton previous = new JButton("<-- Previous");
+        previous.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                motorCount -= 1;
+                if ((motorCount)>=1) {
+                    initUI(motorCount);
+                } else {
+                    motorCount = 10;
+                    initUI(motorCount);
+                }
+            }
+        });
+        jPan.add(previous, BorderLayout.WEST);
+
         JCheckBox velocityCheckbox = new JCheckBox("Velocity", true);
         velocityCheckbox.addActionListener(new ActionListener() {
             @Override
@@ -169,11 +188,11 @@ public class OutputGraph extends JFrame {
                 JCheckBox cb = (JCheckBox) event.getSource();
                 if (cb.isSelected()) {
                     robotValues[0] = true;
-                    initUI(number);
+                    initUI(motorCount);
                     System.out.println("vel selected");
                 } else {
                     robotValues[0] = false;
-                    initUI(number);
+                    initUI(motorCount);
                     System.out.println("vel deselected");
                 }
             }
@@ -186,11 +205,11 @@ public class OutputGraph extends JFrame {
                 JCheckBox cb = (JCheckBox) event.getSource();
                 if (cb.isSelected()) {
                     robotValues[1] = true;
-                    initUI(number);
+                    initUI(motorCount);
                     System.out.println("pos selected");
                 } else {
                     robotValues[1] = false;
-                    initUI(number);
+                    initUI(motorCount);
                     System.out.println("pos deselected");
                 }
             }
@@ -203,11 +222,11 @@ public class OutputGraph extends JFrame {
                 JCheckBox cb = (JCheckBox) event.getSource();
                 if (cb.isSelected()) {
                     robotValues[2] = true;
-                    initUI(number);
+                    initUI(motorCount);
                     System.out.println("set selected");
                 } else {
                     robotValues[2] = false;
-                    initUI(number);
+                    initUI(motorCount);
                     System.out.println("set deselected");
                 }
             }
@@ -220,11 +239,11 @@ public class OutputGraph extends JFrame {
                 JCheckBox cb = (JCheckBox) event.getSource();
                 if (cb.isSelected()) {
                     robotValues[3] = true;
-                    initUI(number);
+                    initUI(motorCount);
                     System.out.println("err selected");
                 } else {
                     robotValues[3] = false;
-                    initUI(number);
+                    initUI(motorCount);
                     System.out.println("err deselected");
                 }
             }
@@ -237,11 +256,11 @@ public class OutputGraph extends JFrame {
                 JCheckBox cb = (JCheckBox) event.getSource();
                 if (cb.isSelected()) {
                     robotValues[4] = true;
-                    initUI(number);
+                    initUI(motorCount);
                     System.out.println("curr selected");
                 } else {
                     robotValues[4] = false;
-                    initUI(number);
+                    initUI(motorCount);
                     System.out.println("curr deselected");
                 }
             }
@@ -249,23 +268,8 @@ public class OutputGraph extends JFrame {
         jPan.add(currentCheckbox);
         add(jPan, BorderLayout.NORTH);
 
-
-        add(new JButton(new AbstractAction("Previous Motor") {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                motorCount -= 1;
-                if ((motorCount)>=1) {
-                    initUI(motorCount);
-                } else {
-                    motorCount = maxMotor;
-                    initUI(motorCount);
-                }
-            }
-        }), BorderLayout.WEST);
-
-        add(new JButton(new AbstractAction("Next Motor") {
-
+        JButton next = new JButton("Next -->");
+        next.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 motorCount += 1;
@@ -275,9 +279,11 @@ public class OutputGraph extends JFrame {
                     motorCount = 1;
                     initUI(motorCount);
                 }
-
             }
-        }), BorderLayout.EAST);
+        });
+        jPan.add(next, BorderLayout.WEST);
+
+        jPan.setBackground(Grey);
 
         pack();
         setTitle("Line chart ");
@@ -293,6 +299,19 @@ public class OutputGraph extends JFrame {
         XYSeries series2 = new XYSeries("Setpoint");
         XYSeries series3 = new XYSeries("Error");
         XYSeries series4 = new XYSeries("Current");
+        XYSeries series5 = new XYSeries("Velocity");
+        XYSeries series6 = new XYSeries("Position");
+        XYSeries series7 = new XYSeries("Setpoint");
+        XYSeries series8 = new XYSeries("Error");
+        XYSeries series9 = new XYSeries("Current");
+
+        series5.addOrUpdate(0, 0);
+        series6.addOrUpdate(0, 0);
+        series7.addOrUpdate(0, 0);
+        series8.addOrUpdate(0, 0);
+        series9.addOrUpdate(0, 0);
+
+
 
         if (number == 0){};
 
@@ -411,21 +430,31 @@ public class OutputGraph extends JFrame {
             series4.add(40, 123);
             series4.add(50, 943);
 
+            series5.add(18, 323);
+            series5.add(20, 643);
+            series5.add(25, 64);
+            series5.add(30, 836);
+            series5.add(40, 123);
+            series5.add(50, 943);
+
         }
 
         XYSeriesCollection dataset = new XYSeriesCollection();
         if (robotValues[0]){
             dataset.addSeries(series);
-        }
+        }else{dataset.addSeries(series5);}
         if (robotValues[1]){
             dataset.addSeries(series1);
-        }if (robotValues[2]){
+        }else{dataset.addSeries(series6);}
+        if (robotValues[2]){
             dataset.addSeries(series2);
-        }if (robotValues[3]){
+        }else{dataset.addSeries(series7);}
+        if (robotValues[3]){
             dataset.addSeries(series3);
-        }if (robotValues[4]){
+        }else{dataset.addSeries(series8);}
+        if (robotValues[4]){
             dataset.addSeries(series4);
-        }
+        }else{dataset.addSeries(series9);}
 
 
         return dataset;
@@ -542,16 +571,17 @@ public class OutputGraph extends JFrame {
 
         XYPlot plot1 = chart1.getXYPlot();
         XYPlot plot2 = chart2.getXYPlot();
-        XYPlot plot3 = chart1.getXYPlot();
-        XYPlot plot4 = chart2.getXYPlot();
-        XYPlot plot5 = chart1.getXYPlot();
-        XYPlot plot6 = chart2.getXYPlot();
-        XYPlot plot7 = chart1.getXYPlot();
-        XYPlot plot8 = chart2.getXYPlot();
-        XYPlot plot9 = chart1.getXYPlot();
-        XYPlot plot10 = chart2.getXYPlot();
+        XYPlot plot3 = chart3.getXYPlot();
+        XYPlot plot4 = chart4.getXYPlot();
+        XYPlot plot5 = chart5.getXYPlot();
+        XYPlot plot6 = chart6.getXYPlot();
+        XYPlot plot7 = chart7.getXYPlot();
+        XYPlot plot8 = chart8.getXYPlot();
+        XYPlot plot9 = chart9.getXYPlot();
+        XYPlot plot10 = chart10.getXYPlot();
 
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+
         renderer.setSeriesPaint(0, Color.RED);
         renderer.setSeriesStroke(0, new BasicStroke(2.0f));
 
@@ -579,6 +609,7 @@ public class OutputGraph extends JFrame {
         plot1.setBackgroundPaint(Grey);
         chart1.getLegend().setBackgroundPaint(Grey);
         chart1.getLegend().setItemPaint(TkoTeal);
+        chart1.setBackgroundPaint(Grey);
 
         plot1.setDomainGridlinesVisible(true);
         plot1.setDomainGridlinePaint(TkoTeal);
@@ -607,6 +638,7 @@ public class OutputGraph extends JFrame {
         plot2.setBackgroundPaint(Grey);
         chart2.getLegend().setBackgroundPaint(Grey);
         chart2.getLegend().setItemPaint(TkoTeal);
+        chart2.setBackgroundPaint(Grey);
 
         plot2.setDomainGridlinesVisible(true);
         plot2.setDomainGridlinePaint(TkoTeal);
@@ -635,6 +667,7 @@ public class OutputGraph extends JFrame {
         plot3.setBackgroundPaint(Grey);
         chart3.getLegend().setBackgroundPaint(Grey);
         chart3.getLegend().setItemPaint(TkoTeal);
+        chart3.setBackgroundPaint(Grey);
 
         plot3.setDomainGridlinesVisible(true);
         plot3.setDomainGridlinePaint(TkoTeal);
@@ -663,6 +696,7 @@ public class OutputGraph extends JFrame {
         plot4.setBackgroundPaint(Grey);
         chart4.getLegend().setBackgroundPaint(Grey);
         chart4.getLegend().setItemPaint(TkoTeal);
+        chart4.setBackgroundPaint(Grey);
 
         plot4.setDomainGridlinesVisible(true);
         plot4.setDomainGridlinePaint(TkoTeal);
@@ -691,6 +725,7 @@ public class OutputGraph extends JFrame {
         plot5.setBackgroundPaint(Grey);
         chart5.getLegend().setBackgroundPaint(Grey);
         chart5.getLegend().setItemPaint(TkoTeal);
+        chart5.setBackgroundPaint(Grey);
 
         plot5.setDomainGridlinesVisible(true);
         plot5.setDomainGridlinePaint(TkoTeal);
@@ -719,6 +754,7 @@ public class OutputGraph extends JFrame {
         plot6.setBackgroundPaint(Grey);
         chart6.getLegend().setBackgroundPaint(Grey);
         chart6.getLegend().setItemPaint(TkoTeal);
+        chart6.setBackgroundPaint(Grey);
 
         plot6.setDomainGridlinesVisible(true);
         plot6.setDomainGridlinePaint(TkoTeal);
@@ -747,6 +783,7 @@ public class OutputGraph extends JFrame {
         plot7.setBackgroundPaint(Grey);
         chart7.getLegend().setBackgroundPaint(Grey);
         chart7.getLegend().setItemPaint(TkoTeal);
+        chart7.setBackgroundPaint(Grey);
 
         plot7.setDomainGridlinesVisible(true);
         plot7.setDomainGridlinePaint(TkoTeal);
@@ -775,6 +812,7 @@ public class OutputGraph extends JFrame {
         plot8.setBackgroundPaint(Grey);
         chart8.getLegend().setBackgroundPaint(Grey);
         chart8.getLegend().setItemPaint(TkoTeal);
+        chart8.setBackgroundPaint(Grey);
 
         plot8.setDomainGridlinesVisible(true);
         plot8.setDomainGridlinePaint(TkoTeal);
@@ -803,6 +841,8 @@ public class OutputGraph extends JFrame {
         plot9.setBackgroundPaint(Grey);
         chart9.getLegend().setBackgroundPaint(Grey);
         chart9.getLegend().setItemPaint(TkoTeal);
+        chart9.setBackgroundPaint(Grey);
+
         plot9.setDomainGridlinesVisible(true);
         plot9.setDomainGridlinePaint(TkoTeal);
 
@@ -812,7 +852,6 @@ public class OutputGraph extends JFrame {
         plot9.getRangeAxis().setTickLabelPaint(TkoTeal);
         plot9.getDomainAxis().setLabelPaint(TkoTeal);
         plot9.getRangeAxis().setLabelPaint(TkoTeal);
-
 
         chart9.getLegend().setFrame(BlockBorder.NONE);
 
@@ -830,6 +869,7 @@ public class OutputGraph extends JFrame {
         plot10.setBackgroundPaint(Grey);
         chart10.getLegend().setBackgroundPaint(Grey);
         chart10.getLegend().setItemPaint(TkoTeal);
+        chart10.setBackgroundPaint(Grey);
 
         plot10.setDomainGridlinesVisible(true);
         plot10.setDomainGridlinePaint(TkoTeal);
@@ -872,15 +912,16 @@ public class OutputGraph extends JFrame {
         if (number == 9){ return chart9;};
         if (number == 10){ return chart10;};
 
-        return chart1;
+        return chart10;
 
     }
 
     public static void main(String[] args) {
 
         SwingUtilities.invokeLater(() -> {
-            OutputGraph ex = new OutputGraph(1);
+            OutputGraph ex = new OutputGraph(number);
             ex.setVisible(true);
         });
+
     }
 }
