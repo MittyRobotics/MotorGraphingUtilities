@@ -1,4 +1,4 @@
-package Graphing;
+package frc.Graphing;
 
 //import javafx.scene.chart.Chart;
 import org.jfree.chart.ChartFactory;
@@ -24,9 +24,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static Graphing.CreateCharts.*;
-import static Graphing.CreateDatasets.createDataset;
-import static Graphing.CreateDatasets.robotValues;
+import static frc.Graphing.CreateCharts.*;
+import static frc.Graphing.CreateDatasets.createDataset;
+import static frc. Graphing.CreateDatasets.robotValues;
+import static frc.Graphing.CreateDatasets.createDataset;
 
 public class OutputGraph extends JFrame {
 

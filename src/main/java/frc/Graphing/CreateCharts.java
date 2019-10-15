@@ -1,4 +1,4 @@
-package Graphing;
+package frc.Graphing;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
