@@ -21,7 +21,6 @@ public class GettingInputValues{
     WPI_TalonSRX talon9 = new WPI_TalonSRX(20);
     WPI_TalonSRX talon10 = new WPI_TalonSRX(21);
 
-    
 
 
 }

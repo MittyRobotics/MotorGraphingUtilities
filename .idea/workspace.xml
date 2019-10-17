@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7a2a1f5-a8e7-4f42-b095-784752d99fe2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/GettingInputValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/MotorGraphingUtilities.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/MotorGraphingUtilities.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/MotorGraphingUtilities.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/Graphing/readFromFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/WriteToFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/getValues.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/Graphing/CreateDatasets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/Graphing/CreateDatasets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/Graphing/OutputGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/Graphing/OutputGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/GettingInputValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/GettingInputValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/Robot.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -170,5 +176,16 @@
       <updated>1571180962351</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
