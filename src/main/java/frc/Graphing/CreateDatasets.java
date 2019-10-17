@@ -1,6 +1,5 @@
 package frc.Graphing;
 
-import frc.robot.WriteToFile;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -24,7 +23,7 @@ public class CreateDatasets {
         XYSeries series9 = new XYSeries("Current");
 
 
-        if (readFromFile.motorID == 1){ //Add the time stuff
+        if (number == 1){ //TODO replace with getting values from file later
 
             series.addOrUpdate(18, 567);
             series.addOrUpdate(20, 612);
