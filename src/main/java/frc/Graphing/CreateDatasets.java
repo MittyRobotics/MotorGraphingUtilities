@@ -12,7 +12,7 @@ public class CreateDatasets {
 
     public static XYDataset createDataset(int number) {
 
-        XYSeries series = new XYSeries("Velocity");
+        XYSeries[] series = new XYSeries[10];
         XYSeries series1 = new XYSeries("Position");
         XYSeries series2 = new XYSeries("Setpoint");
         XYSeries series3 = new XYSeries("Error");
@@ -22,6 +22,44 @@ public class CreateDatasets {
         XYSeries series7 = new XYSeries("Setpoint");
         XYSeries series8 = new XYSeries("Error");
         XYSeries series9 = new XYSeries("Current");
+
+        for (int J = 0; J < readFromFile.motorID.length; J ++){
+
+            if (readFromFile.motorID[J] == 1){
+
+                series.addOrUpdate((readFromFile.time[J]), readFromFile.yVelocity[J]);
+                series1.addOrUpdate((readFromFile.time[J]), readFromFile.yPosition[J]);
+                series2.addOrUpdate((readFromFile.time[J]), readFromFile.ySetpoint[J]);
+                series3.addOrUpdate((readFromFile.time[J]), readFromFile.yError[J]);
+                series4.addOrUpdate((readFromFile.time[J]), readFromFile.yCurrent[J]);
+
+            }else if (readFromFile.motorID[J] == 2){
+
+                series.addOrUpdate((readFromFile.time[J]), readFromFile.yVelocity[J]);
+                series1.addOrUpdate((readFromFile.time[J]), readFromFile.yPosition[J]);
+                series2.addOrUpdate((readFromFile.time[J]), readFromFile.ySetpoint[J]);
+                series3.addOrUpdate((readFromFile.time[J]), readFromFile.yError[J]);
+                series4.addOrUpdate((readFromFile.time[J]), readFromFile.yCurrent[J]);
+
+            }else if (readFromFile.motorID[J] == 2)
+        }
+
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        if (robotValues[0]){
+            dataset.addSeries(series);
+        }else{dataset.addSeries(series5);}
+        if (robotValues[1]){
+            dataset.addSeries(series1);
+        }else{dataset.addSeries(series6);}
+        if (robotValues[2]){
+            dataset.addSeries(series2);
+        }else{dataset.addSeries(series7);}
+        if (robotValues[3]){
+            dataset.addSeries(series3);
+        }else{dataset.addSeries(series8);}
+        if (robotValues[4]){
+            dataset.addSeries(series4);
+        }else{dataset.addSeries(series9);}
 
 
         if (readFromFile.motorID == 1){ //Add the time stuff
@@ -147,24 +185,6 @@ public class CreateDatasets {
             series5.add(50, 943);
 
         }
-
-        XYSeriesCollection dataset = new XYSeriesCollection();
-        if (robotValues[0]){
-            dataset.addSeries(series);
-        }else{dataset.addSeries(series5);}
-        if (robotValues[1]){
-            dataset.addSeries(series1);
-        }else{dataset.addSeries(series6);}
-        if (robotValues[2]){
-            dataset.addSeries(series2);
-        }else{dataset.addSeries(series7);}
-        if (robotValues[3]){
-            dataset.addSeries(series3);
-        }else{dataset.addSeries(series8);}
-        if (robotValues[4]){
-            dataset.addSeries(series4);
-        }else{dataset.addSeries(series9);}
-
 
         return dataset;
     }

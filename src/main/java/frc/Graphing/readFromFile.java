@@ -13,30 +13,35 @@ public class readFromFile {
     static String separator = " ";
 
 
-    static int time;
-    static int yVelocity;
-    static int yPosition;
-    static int ySetpoint;
-    static int yError;
-    static int yCurrent;
-    static int motorID;
+    static int[] time;
+    static int[] yVelocity;
+    static int[] yPosition;
+    static int[] ySetpoint;
+    static int[] yError;
+    static int[] yCurrent;
+    static int[] motorID;
 
     public static void readFromFile(){
+
+        int j = 0;
+
         try (
                 Scanner filescan = new Scanner((Readable) WriteToFile.inputfile);){
 
             while (filescan.hasNext()){
+
                 aLine = filescan.nextLine();
                 StrArray = aLine.split(separator);
 
-                time = Integer.parseInt(StrArray[6]);
-                yVelocity = Integer.parseInt(StrArray[0]);
-                yPosition = Integer.parseInt(StrArray[1]);
-                ySetpoint = Integer.parseInt(StrArray[2]);
-                yError = Integer.parseInt(StrArray[3]);
-                yCurrent = Integer.parseInt(StrArray[4]);
-                motorID = Integer.parseInt((StrArray[5]));
+                motorID[j] = Integer.parseInt((StrArray[0]));
+                time[j] = Integer.parseInt(StrArray[1]);
+                yVelocity[j] = Integer.parseInt(StrArray[2]);
+                ySetpoint[j] = Integer.parseInt(StrArray[3]);
+                yPosition[j] = Integer.parseInt(StrArray[4]);
+                yError[j] = Integer.parseInt(StrArray[5]);
+                yCurrent[j] = Integer.parseInt(StrArray[6]);
 
+                j++;
 
             }
         }

@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.Talon;
@@ -23,7 +24,7 @@ public class Robot extends TimedRobot {
   private Joystick m_leftStick;
   private Joystick m_rightStick;
 
-  static PWMTalonSRX[] talonList;
+  static WPI_TalonSRX[] talonList;
 
   @Override
   public void robotInit() {
@@ -31,16 +32,16 @@ public class Robot extends TimedRobot {
     m_leftStick = new Joystick(0);
     m_rightStick = new Joystick(1);
 
-    talonList[0] = new PWMTalonSRX(0);
-    talonList[1] = new PWMTalonSRX(1);
-    talonList[2] = new PWMTalonSRX(2);
-    talonList[3] = new PWMTalonSRX(3);
-    talonList[4] = new PWMTalonSRX(10);
-    talonList[5] = new PWMTalonSRX(11);
-    talonList[6] = new PWMTalonSRX(12);
-    talonList[7] = new PWMTalonSRX(13);
-    talonList[8] = new PWMTalonSRX(20);
-    talonList[9] = new PWMTalonSRX(21);
+    talonList[0] = new WPI_TalonSRX(0);
+    talonList[1] = new WPI_TalonSRX(1);
+    talonList[2] = new WPI_TalonSRX(2);
+    talonList[3] = new WPI_TalonSRX(3);
+    talonList[4] = new WPI_TalonSRX(10);
+    talonList[5] = new WPI_TalonSRX(11);
+    talonList[6] = new WPI_TalonSRX(12);
+    talonList[7] = new WPI_TalonSRX(13);
+    talonList[8] = new WPI_TalonSRX(20);
+    talonList[9] = new WPI_TalonSRX(21);
 
   }
 
