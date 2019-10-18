@@ -9,13 +9,14 @@ public class WriteToFile {
     public static FileWriter inputfile;
     {
         try {
-            inputfile = new FileWriter ("C:/Users/U1/Documents/GitHub/MotorGraphingUtilities/RobotText" +
+            /*inputfile = new FileWriter ("C:/Users/U1/Documents/GitHub/MotorGraphingUtilities/RobotText" +
                     "" +
                     "" +
                     "" +
                     "" +
                     "" +
-                    "txt");
+                    "txt");*/
+            inputfile = new FileWriter ("/Users/veer/Programming/MotorGraphingUtilities/RobotText.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
