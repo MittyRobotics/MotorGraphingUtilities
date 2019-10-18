@@ -12,7 +12,53 @@ public class CreateDatasets {
 
     public static XYDataset createDataset(int number) {
 
-        XYSeries[] series = new XYSeries[10];
+        XYSeries[] vel = new XYSeries[10];
+        XYSeries[] pos = new XYSeries[10];
+        XYSeries[] set = new XYSeries[10];
+        XYSeries[] err = new XYSeries[10];
+        XYSeries[] cur = new XYSeries[10];
+        XYSeries[] vel1 = new XYSeries[10];
+        XYSeries[] pos1 = new XYSeries[10];
+        XYSeries[] set1 = new XYSeries[10];
+        XYSeries[] err1 = new XYSeries[10];
+        XYSeries[] cur1 = new XYSeries[10];
+
+        for (int Z = 0; Z <= 10; Z++) {
+            vel[Z] = new XYSeries("Velocity");
+        }
+        for (int Z = 0; Z <= 10; Z++) {
+            pos[Z] = new XYSeries("Position");
+        }
+        for (int Z = 0; Z <= 10; Z++) {
+            set[Z] = new XYSeries("Setpoint");
+        }
+        for (int Z = 0; Z <= 10; Z++) {
+            err[Z] = new XYSeries("Error");
+        }
+        for (int Z = 0; Z <= 10; Z++) {
+            cur[Z] = new XYSeries("Current");
+        }
+        for (int Z = 0; Z <= 10; Z++) {
+            vel1[Z] = new XYSeries("Velocity");
+        }
+        for (int Z = 0; Z <= 10; Z++) {
+            pos1[Z] = new XYSeries("Position");
+        }
+        for (int Z = 0; Z <= 10; Z++) {
+            set1[Z] = new XYSeries("Setpoint");
+        }
+        for (int Z = 0; Z <= 10; Z++) {
+            err1[Z] = new XYSeries("Error");
+        }
+        for (int Z = 0; Z <= 10; Z++) {
+            vel1[Z] = new XYSeries("Current");
+        }
+
+
+
+        /*
+        series[1] = new XYSeries("Velocity");
+
         XYSeries series1 = new XYSeries("Position");
         XYSeries series2 = new XYSeries("Setpoint");
         XYSeries series3 = new XYSeries("Error");
@@ -22,169 +68,38 @@ public class CreateDatasets {
         XYSeries series7 = new XYSeries("Setpoint");
         XYSeries series8 = new XYSeries("Error");
         XYSeries series9 = new XYSeries("Current");
-
+        */
         for (int J = 0; J < readFromFile.motorID.length; J ++){
 
-            if (readFromFile.motorID[J] == 1){
-
-                series.addOrUpdate((readFromFile.time[J]), readFromFile.yVelocity[J]);
-                series1.addOrUpdate((readFromFile.time[J]), readFromFile.yPosition[J]);
-                series2.addOrUpdate((readFromFile.time[J]), readFromFile.ySetpoint[J]);
-                series3.addOrUpdate((readFromFile.time[J]), readFromFile.yError[J]);
-                series4.addOrUpdate((readFromFile.time[J]), readFromFile.yCurrent[J]);
-
-            }else if (readFromFile.motorID[J] == 2){
-
-                series.addOrUpdate((readFromFile.time[J]), readFromFile.yVelocity[J]);
-                series1.addOrUpdate((readFromFile.time[J]), readFromFile.yPosition[J]);
-                series2.addOrUpdate((readFromFile.time[J]), readFromFile.ySetpoint[J]);
-                series3.addOrUpdate((readFromFile.time[J]), readFromFile.yError[J]);
-                series4.addOrUpdate((readFromFile.time[J]), readFromFile.yCurrent[J]);
-
-            }else if (readFromFile.motorID[J] == 2)
+            vel[readFromFile.motorID[J]].addOrUpdate((readFromFile.time[J]), readFromFile.yVelocity[J]);
+            pos[readFromFile.motorID[J]].addOrUpdate((readFromFile.time[J]), readFromFile.yPosition[J]);
+            set[readFromFile.motorID[J]].addOrUpdate((readFromFile.time[J]), readFromFile.ySetpoint[J]);
+            err[readFromFile.motorID[J]].addOrUpdate((readFromFile.time[J]), readFromFile.yError[J]);
+            cur[readFromFile.motorID[J]].addOrUpdate((readFromFile.time[J]), readFromFile.yCurrent[J]);
         }
 
         XYSeriesCollection dataset = new XYSeriesCollection();
-        if (robotValues[0]){
-            dataset.addSeries(series);
-        }else{dataset.addSeries(series5);}
-        if (robotValues[1]){
-            dataset.addSeries(series1);
-        }else{dataset.addSeries(series6);}
-        if (robotValues[2]){
-            dataset.addSeries(series2);
-        }else{dataset.addSeries(series7);}
-        if (robotValues[3]){
-            dataset.addSeries(series3);
-        }else{dataset.addSeries(series8);}
-        if (robotValues[4]){
-            dataset.addSeries(series4);
-        }else{dataset.addSeries(series9);}
 
-
-        if (readFromFile.motorID == 1){ //Add the time stuff
-
-            series.addOrUpdate(18, 567);
-            series.addOrUpdate(20, 612);
-            series.addOrUpdate(25, 800);
-            series.addOrUpdate(30, 980);
-            series.addOrUpdate(40, 112);
-            series.addOrUpdate(50, 324);
-
-            series1.add(18, 537);
-            series1.add(20, 612);
-            series1.add(25, 800);
-            series1.add(30, 980);
-            series1.add(40, 141);
-            series1.add(50, 235);
-
-            series2.add(10, 241);
-            series2.add(20, 160);
-            series2.add(35, 123);
-            series2.add(40, 594);
-            series2.add(45, 687);
-            series2.add(50, 84);
-
-            series3.add(12, 743);
-            series3.add(23, 845);
-            series3.add(28, 234);
-            series3.add(34, 643);
-            series3.add(45, 123);
-            series3.add(50, 52);
-
-            series4.add(18, 235);
-            series4.add(20, 123);
-            series4.add(25, 254);
-            series4.add(30, 654);
-            series4.add(40, 21);
-            series4.add(50, 234);
-
+        for (int t = 0; t < 10 ; t++){
+            if (number == t){
+                if (robotValues[0]){
+                    dataset.addSeries(vel[t]);
+                }else{dataset.addSeries(vel1[t]);}
+                if (robotValues[1]){
+                    dataset.addSeries(pos[t]);
+                }else{dataset.addSeries(pos1[t]);}
+                if (robotValues[2]){
+                    dataset.addSeries(set[t]);
+                }else{dataset.addSeries(set1[t]);}
+                if (robotValues[3]){
+                    dataset.addSeries(err[t]);
+                }else{dataset.addSeries(err1[t]);}
+                if (robotValues[4]){
+                    dataset.addSeries(cur[t]);
+                }else{dataset.addSeries(cur1[t]);}
+            }
         }
 
-        if (number == 2){ //TODO replace with getting values from file later
-
-            series.addOrUpdate(18, 123);
-            series.addOrUpdate(20, 874);
-            series.addOrUpdate(25, 234);
-            series.addOrUpdate(30, 91);
-            series.addOrUpdate(40, 101);
-            series.addOrUpdate(50, 2002);
-
-            series1.add(18, 134);
-            series1.add(20, 244);
-            series1.add(25, 948);
-            series1.add(30, 2091);
-            series1.add(40, 1092);
-            series1.add(50, 2452);
-
-            series2.add(18, 233);
-            series2.add(20, 344);
-            series2.add(25, 244);
-            series2.add(30, 534);
-            series2.add(40, 24);
-            series2.add(50, 243);
-
-            series3.add(18, 123);
-            series3.add(20, 432);
-            series3.add(25, 54);
-            series3.add(30, 12);
-            series3.add(40, 67);
-            series3.add(50, 645);
-
-            series4.add(18, 323);
-            series4.add(20, 643);
-            series4.add(25, 64);
-            series4.add(30, 836);
-            series4.add(40, 123);
-            series4.add(50, 943);
-
-        }
-
-        if (number > 2){ //TODO replace with getting values from file later
-
-            series.addOrUpdate(18, 123);
-            series.addOrUpdate(20, 874);
-            series.addOrUpdate(25, 234);
-            series.addOrUpdate(30, 91);
-            series.addOrUpdate(40, 101);
-            series.addOrUpdate(50, 2002);
-
-            series1.add(18, 134);
-            series1.add(20, 244);
-            series1.add(25, 948);
-            series1.add(30, 2091);
-            series1.add(40, 1092);
-            series1.add(50, 2452);
-
-            series2.add(18, 233);
-            series2.add(20, 344);
-            series2.add(25, 244);
-            series2.add(30, 534);
-            series2.add(40, 24);
-            series2.add(50, 223);
-
-            series3.add(18, 123);
-            series3.add(20, 432);
-            series3.add(25, 54);
-            series3.add(30, 12);
-            series3.add(40, 67);
-            series3.add(50, 645);
-
-            series4.add(18, 323);
-            series4.add(20, 643);
-            series4.add(25, 64);
-            series4.add(30, 836);
-            series4.add(40, 123);
-            series4.add(50, 943);
-
-            series5.add(18, 323);
-            series5.add(20, 643);
-            series5.add(25, 64);
-            series5.add(30, 836);
-            series5.add(40, 123);
-            series5.add(50, 943);
-
-        }
 
         return dataset;
     }
