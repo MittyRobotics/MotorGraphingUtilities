@@ -12,6 +12,9 @@ public class CreateDatasets {
 
     public static XYDataset createDataset(int number) {
 
+        WriteToFile.writeFile();
+        readFromFile.readFromFile();
+
         XYSeries[] vel = new XYSeries[10];
         XYSeries[] pos = new XYSeries[10];
         XYSeries[] set = new XYSeries[10];
@@ -23,34 +26,34 @@ public class CreateDatasets {
         XYSeries[] err1 = new XYSeries[10];
         XYSeries[] cur1 = new XYSeries[10];
 
-        for (int Z = 0; Z <= 10; Z++) {
+        for (int Z = 0; Z < 10; Z++) {
             vel[Z] = new XYSeries("Velocity");
         }
-        for (int Z = 0; Z <= 10; Z++) {
+        for (int Z = 0; Z < 10; Z++) {
             pos[Z] = new XYSeries("Position");
         }
-        for (int Z = 0; Z <= 10; Z++) {
+        for (int Z = 0; Z < 10; Z++) {
             set[Z] = new XYSeries("Setpoint");
         }
-        for (int Z = 0; Z <= 10; Z++) {
+        for (int Z = 0; Z < 10; Z++) {
             err[Z] = new XYSeries("Error");
         }
-        for (int Z = 0; Z <= 10; Z++) {
+        for (int Z = 0; Z < 10; Z++) {
             cur[Z] = new XYSeries("Current");
         }
-        for (int Z = 0; Z <= 10; Z++) {
+        for (int Z = 0; Z < 10; Z++) {
             vel1[Z] = new XYSeries("Velocity");
         }
-        for (int Z = 0; Z <= 10; Z++) {
+        for (int Z = 0; Z < 10; Z++) {
             pos1[Z] = new XYSeries("Position");
         }
-        for (int Z = 0; Z <= 10; Z++) {
+        for (int Z = 0; Z < 10; Z++) {
             set1[Z] = new XYSeries("Setpoint");
         }
-        for (int Z = 0; Z <= 10; Z++) {
+        for (int Z = 0; Z < 10; Z++) {
             err1[Z] = new XYSeries("Error");
         }
-        for (int Z = 0; Z <= 10; Z++) {
+        for (int Z = 0; Z < 10; Z++) {
             vel1[Z] = new XYSeries("Current");
         }
 
@@ -69,7 +72,7 @@ public class CreateDatasets {
         XYSeries series8 = new XYSeries("Error");
         XYSeries series9 = new XYSeries("Current");
         */
-        for (int J = 0; J < readFromFile.motorID.length; J ++){
+        for (int J = 0; J < 3; J ++){
 
             vel[readFromFile.motorID[J]].addOrUpdate((readFromFile.time[J]), readFromFile.yVelocity[J]);
             pos[readFromFile.motorID[J]].addOrUpdate((readFromFile.time[J]), readFromFile.yPosition[J]);

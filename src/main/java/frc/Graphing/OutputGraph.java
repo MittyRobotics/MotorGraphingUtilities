@@ -293,6 +293,8 @@ public class OutputGraph extends JFrame {
     public static void main(String[] args) {
 
         SwingUtilities.invokeLater(() -> {
+
+            System.out.println(";adsjk;lfandskfakl;ndsfko;asdj;iflasd;ljfl;asdkfjlkas");
             OutputGraph ex = new OutputGraph(number);
             ex.setVisible(true);
         });

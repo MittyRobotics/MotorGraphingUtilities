@@ -9,24 +9,26 @@ public class WriteToFile {
     public static FileWriter inputfile;
     {
         try {
-            /*inputfile = new FileWriter ("C:/Users/U1/Documents/GitHub/MotorGraphingUtilities/RobotText" +
+            inputfile = new FileWriter ("C:/Users/U1/Documents/GitHub/MotorGraphingUtilities/RobotText" +
                     "" +
                     "" +
                     "" +
                     "" +
                     "" +
-                    "txt");*/
-            inputfile = new FileWriter ("/Users/veer/Programming/MotorGraphingUtilities/RobotText.txt");
+                    "txt");
+            //inputfile = new FileWriter ("/Users/veer/Programming/MotorGraphingUtilities/RobotText.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void writeFile (){
+    public static void writeFile (){
 
         //Velocity Position Setpoint Error Current Time
 
-        int t;
+        BufferedWriter writer = new BufferedWriter(inputfile);
+
+        /*int t;
 
         for (t = 0; t < 10; t++){
 
@@ -35,9 +37,6 @@ public class WriteToFile {
             double setpoint = Robot.talonList[t].get();
             double error = Robot.talonList[t].get();
             double current = Robot.talonList[t].get();
-
-
-            BufferedWriter writer = new BufferedWriter(inputfile);
 
             try {
                 writer.write(t + " " + velocity + " " + position + " " + setpoint + " " + error + " " + current);
@@ -48,10 +47,10 @@ public class WriteToFile {
             try {
                 writer.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                e.printStackTrace();*/
             }
         }
-    }
+    //}
 
-}
+//}
 
