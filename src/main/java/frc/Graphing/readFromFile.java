@@ -24,7 +24,7 @@ public class readFromFile {
     public static void readFromFile(){
 
         int j = 0;
-
+/*
         try (
                 Scanner filescan = new Scanner((Readable) WriteToFile.inputfile);){
 
@@ -44,7 +44,11 @@ public class readFromFile {
                 j++;
 
             }
+
+
         }
+
+ */
     }
 
 }

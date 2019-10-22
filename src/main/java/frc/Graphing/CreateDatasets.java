@@ -12,7 +12,7 @@ public class CreateDatasets {
 
     public static XYDataset createDataset(int number) {
 
-        WriteToFile.writeFile();
+     //   WriteToFile.writeFile();
         readFromFile.readFromFile();
 
         XYSeries[] vel = new XYSeries[10];

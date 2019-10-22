@@ -1,34 +1,31 @@
 package frc.robot;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
+import java.io.*;
 public class WriteToFile {
+    public static void main(String args[])throws IOException {
+        File file = new File("/Users/veer/Programming/MotorGraphingUtilities/RobotText.txt");
+        //File file = new File("C:/Users/U1/Documents/GitHub/MotorGraphingUtilities/RobotText.txt");
 
-    public static FileWriter inputfile;
-    {
-        try {
-            inputfile = new FileWriter ("C:/Users/U1/Documents/GitHub/MotorGraphingUtilities/RobotText" +
-                    "" +
-                    "" +
-                    "" +
-                    "" +
-                    "" +
-                    "txt");
-            //inputfile = new FileWriter ("/Users/veer/Programming/MotorGraphingUtilities/RobotText.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
+        // creates the file
+        if (!file.exists()) {
+            file.createNewFile();
         }
-    }
+        // creates a FileWriter Object
+        FileWriter writer = new FileWriter(file);
 
-    public static void writeFile (){
+        // Writes the content to the file
+        writer.write("1 1 32 092 234 243 11\n");
+        writer.write("1 2 87 789 1111 7564 78\n");
+        writer.write("4 2 232 242 4214 241 41\n");
+        writer.write("2 3 098 2 34 1244 124 4\n");
+        writer.write("3 4 1242 0182 546 2413 41\n");
+        writer.flush();
+        writer.close();
 
-        //Velocity Position Setpoint Error Current Time
 
-        BufferedWriter writer = new BufferedWriter(inputfile);
+        /*
+        // code to write robot values to file (work in progress)
 
-        /*int t;
+        FileWriter writer = new FileWriter(file);
 
         for (t = 0; t < 10; t++){
 
@@ -38,19 +35,25 @@ public class WriteToFile {
             double error = Robot.talonList[t].get();
             double current = Robot.talonList[t].get();
 
-            try {
-                writer.write(t + " " + velocity + " " + position + " " + setpoint + " " + error + " " + current);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();*/
-            }
+            writer.write(t + " " + velocity + " " + position + " " + setpoint + " " + error + " " + current + "\n");
         }
-    //}
+        writer.flush();
+        writer.close();
 
-//}
+        */
+
+
+       /*
+        // Creates a FileReader Object
+        FileReader fr = new FileReader(file);
+        char [] a = new char[50];
+        fr.read(a);   // reads the content to the array
+
+        for(char c : a)
+            System.out.print(c);   // prints the characters one by one
+        fr.close();
+
+        */
+    }
+}
 
