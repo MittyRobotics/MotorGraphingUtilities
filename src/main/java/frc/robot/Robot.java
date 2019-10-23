@@ -42,7 +42,6 @@ public class Robot extends TimedRobot {
     talonList[7] = new WPI_TalonSRX(13);
     talonList[8] = new WPI_TalonSRX(20);
     talonList[9] = new WPI_TalonSRX(21);
-
   }
 
   @Override

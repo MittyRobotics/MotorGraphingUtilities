@@ -1,14 +1,18 @@
 package frc.robot;
 import java.io.*;
 public class WriteToFile {
-    public static void main(String args[])throws IOException {
-        File file = new File("/Users/veer/Programming/MotorGraphingUtilities/RobotText.txt");
-        //File file = new File("C:/Users/U1/Documents/GitHub/MotorGraphingUtilities/RobotText.txt");
 
+    public static File file = new File("/Users/veer/Programming/MotorGraphingUtilities/RobotText.txt");
+    //public staticFile file = new File("C:/Users/U1/Documents/GitHub/MotorGraphingUtilities/RobotText.txt");
+
+
+    public static void main()throws IOException {
         // creates the file
         if (!file.exists()) {
             file.createNewFile();
         }
+
+        /*
         // creates a FileWriter Object
         FileWriter writer = new FileWriter(file);
 
@@ -20,27 +24,29 @@ public class WriteToFile {
         writer.write("3 4 1242 0182 546 2413 41\n");
         writer.flush();
         writer.close();
+        */
 
 
-        /*
         // code to write robot values to file (work in progress)
 
         FileWriter writer = new FileWriter(file);
+        for (int t = 0; t < 10; t++){
 
-        for (t = 0; t < 10; t++){
+            /*
+            double time = 10;
+            double velocity = Robot.talonList[t].getSelectedSensorVelocity();
+            double position = Robot.talonList[t].getSelectedSensorPosition();
+            double error = Robot.talonList[t].getClosedLoopError();
+            double setpoint = position+error;
+            double current = Robot.talonList[t].getOutputCurrent();*/
 
-            double velocity = Robot.talonList[t].get();
-            double position = Robot.talonList[t].get();
-            double setpoint = Robot.talonList[t].get();
-            double error = Robot.talonList[t].get();
-            double current = Robot.talonList[t].get();
-
-            writer.write(t + " " + velocity + " " + position + " " + setpoint + " " + error + " " + current + "\n");
+            //writer.write(t + " " + time + " " + velocity + " " + setpoint + " " + position + " " + error + " " + current + "\n");
+            writer.write("121 141 161 111 111 111\n");
         }
         writer.flush();
         writer.close();
 
-        */
+
 
 
        /*

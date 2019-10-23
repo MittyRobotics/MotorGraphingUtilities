@@ -1,6 +1,7 @@
 package frc.Graphing;
 
 //import javafx.scene.chart.Chart;
+import frc.robot.WriteToFile;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -27,7 +28,6 @@ import java.util.Scanner;
 import static frc.Graphing.CreateCharts.*;
 import static frc.Graphing.CreateDatasets.createDataset;
 import static frc. Graphing.CreateDatasets.robotValues;
-import static frc.Graphing.CreateDatasets.createDataset;
 
 public class OutputGraph extends JFrame {
 
@@ -291,6 +291,12 @@ public class OutputGraph extends JFrame {
     }
 
     public static void main(String[] args) {
+
+        try {
+            WriteToFile.main();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         SwingUtilities.invokeLater(() -> {
 

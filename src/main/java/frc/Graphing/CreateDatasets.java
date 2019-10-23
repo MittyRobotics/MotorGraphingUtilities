@@ -5,15 +5,20 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import frc.Graphing.readFromFile;
+
+import java.io.IOException;
+
 public class CreateDatasets {
 
     //Velocity Position Setpoint Error Current
     public static boolean[] robotValues = new boolean[] {true, true, true, true, true};
 
-    public static XYDataset createDataset(int number) {
+    public static XYDataset createDataset(int number) throws IOException {
 
      //   WriteToFile.writeFile();
+        System.out.println("BEFORE READ FROM FILE");
         readFromFile.readFromFile();
+        System.out.println("AFTER READ FROM FILE");
 
         XYSeries[] vel = new XYSeries[10];
         XYSeries[] pos = new XYSeries[10];
@@ -73,7 +78,7 @@ public class CreateDatasets {
         XYSeries series9 = new XYSeries("Current");
         */
         for (int J = 0; J < 3; J ++){
-
+            System.out.println("in createdataset 000000000000000000000000000");
             vel[readFromFile.motorID[J]].addOrUpdate((readFromFile.time[J]), readFromFile.yVelocity[J]);
             pos[readFromFile.motorID[J]].addOrUpdate((readFromFile.time[J]), readFromFile.yPosition[J]);
             set[readFromFile.motorID[J]].addOrUpdate((readFromFile.time[J]), readFromFile.ySetpoint[J]);
