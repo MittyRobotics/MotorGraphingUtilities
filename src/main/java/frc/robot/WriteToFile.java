@@ -41,7 +41,7 @@ public class WriteToFile {
             double current = Robot.talonList[t].getOutputCurrent();*/
 
             //writer.write(t + " " + time + " " + velocity + " " + setpoint + " " + position + " " + error + " " + current + "\n");
-            writer.write("121 141 161 111 111 111\n");
+            writer.write("121 141 161 111 111 111 143\n");
         }
         writer.flush();
         writer.close();
