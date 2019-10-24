@@ -1,6 +1,6 @@
 package frc.robot;
 
-public class getValues {
+public class GetValues {
 
     public double getVelocity (int motorNumber){
         return 10*motorNumber;
