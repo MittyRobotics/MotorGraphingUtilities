@@ -30,7 +30,9 @@ public class WriteToFile {
         // code to write robot values to file (work in progress)
 
         FileWriter writer = new FileWriter(file);
-        for (int t = 0; t < 10; t++){
+
+
+      //  for (int t = 0; t < 10; t++){
 
             /*
             double time = 10;
@@ -41,8 +43,14 @@ public class WriteToFile {
             double current = Robot.talonList[t].getOutputCurrent();*/
 
             //writer.write(t + " " + time + " " + velocity + " " + setpoint + " " + position + " " + error + " " + current + "\n");
-            writer.write("121 141 161 111 111 111 143\n");
-        }
+      //      writer.write("1 141 161 111 111 111 143\n");
+       // }
+        writer.write("1 141 161 111 111 111 143\n");
+        writer.write("2 141 162 151 121 151 123\n");
+        writer.write("4 141 161 111 111 111 143\n");
+        writer.write("5 141 161 111 111 111 143\n");
+
+
         writer.flush();
         writer.close();
 

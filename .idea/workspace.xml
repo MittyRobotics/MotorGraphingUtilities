@@ -4,8 +4,6 @@
     <list default="true" id="d7a2a1f5-a8e7-4f42-b095-784752d99fe2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RobotText.txt" beforeDir="false" afterPath="$PROJECT_DIR$/RobotText.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/Graphing/CreateDatasets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/Graphing/CreateDatasets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/Graphing/readFromFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/Graphing/readFromFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/WriteToFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/WriteToFile.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
