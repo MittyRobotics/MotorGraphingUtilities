@@ -43,11 +43,13 @@ public class WriteToFile {
             //writer.write(t + " " + time + " " + velocity + " " + setpoint + " " + position + " " + error + " " + current + "\n");
       //      writer.write("1 141 161 111 111 111 143\n");
        // }
-        writer.write("1 141 161 111 111 111 143\n");
-        writer.write("2 141 162 151 121 151 123\n");
-        writer.write("4 141 161 111 111 111 143\n");
-        writer.write("5 141 161 111 111 111 143\n");
 
+        for (int J = 0; J < 10; J++){
+            writer.write(J + " " + J*2 + " " + "161 111 111 111 143\n");
+            writer.write(J + " " + J*3 + " " + "161 111 111 111 143\n");
+            writer.write(J + " " + J*4 + " " + "161 111 111 111 143\n");
+            writer.write(J + " " + J*5 + " " + "161 111 111 111 143\n");
+        }
 
         writer.flush();
         writer.close();
