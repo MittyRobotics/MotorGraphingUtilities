@@ -1,8 +1,11 @@
 package frc.robot;
 import java.io.*;
+import frc.Graphing.*;
 public class WriteToFile {
 
     public static File file = new File("RobotText.txt");
+
+    public static int[] motorID = new int[0];
 
     public static void main()throws IOException {
         // creates the file
@@ -30,7 +33,7 @@ public class WriteToFile {
         FileWriter writer = new FileWriter(file);
 
 
-      //  for (int t = 0; t < 10; t++){
+       for (int t = 0; t < motorID.length; t++){
 
             /*
             double time = 10;
@@ -44,7 +47,7 @@ public class WriteToFile {
       //      writer.write("1 141 161 111 111 111 143\n");
        // }
 
-        for (int J = 0; J < 10; J++){
+        for (int J = 0; J < motorID.length; J++){
             writer.write(J + " " + J*2 + " " + "161 111 111 111 143\n");
             writer.write(J + " " + J*3 + " " + "161 111 111 111 143\n");
             writer.write(J + " " + J*4 + " " + "161 111 111 111 143\n");
@@ -69,5 +72,5 @@ public class WriteToFile {
 
         */
     }
-}
+}}
 

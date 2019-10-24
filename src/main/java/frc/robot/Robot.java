@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import frc.robot.WriteToFile;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
@@ -16,6 +18,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,8 +48,18 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void teleopPeriodic() {
-    m_myRobot.tankDrive(m_leftStick.getY(), m_rightStick.getY());
+  public void teleopInit(){
+    //write your stuff here, it will execute once when the robot is enabled in teleop mode
+  }
+  @Override
+  public void teleopPeriodic(){
+    //this code will run once per loop in teleop mode, dont do anything here unless you want it to loop
+
+    try {
+      WriteToFile.main();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
 
