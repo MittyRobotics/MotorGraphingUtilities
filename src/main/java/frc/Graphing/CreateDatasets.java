@@ -77,7 +77,7 @@ public class CreateDatasets {
         XYSeries series8 = new XYSeries("Error");
         XYSeries series9 = new XYSeries("Current");
         */
-        for (int J = 0; J < 3; J ++){
+        for (int J = 0; J < readFromFile.motorID.length; J ++){
             vel[readFromFile.motorID[J]].addOrUpdate((readFromFile.time[J]), readFromFile.yVelocity[J]);
             pos[readFromFile.motorID[J]].addOrUpdate((readFromFile.time[J]), readFromFile.yPosition[J]);
             set[readFromFile.motorID[J]].addOrUpdate((readFromFile.time[J]), readFromFile.ySetpoint[J]);

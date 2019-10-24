@@ -2,9 +2,7 @@ package frc.robot;
 import java.io.*;
 public class WriteToFile {
 
-    public static File file = new File("/Users/veer/Programming/MotorGraphingUtilities/RobotText.txt");
-    //public staticFile file = new File("C:/Users/U1/Documents/GitHub/MotorGraphingUtilities/RobotText.txt");
-
+    public static File file = new File("RobotText.txt");
 
     public static void main()throws IOException {
         // creates the file
