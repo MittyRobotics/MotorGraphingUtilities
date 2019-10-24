@@ -33,26 +33,27 @@ public class WriteToFile {
         FileWriter writer = new FileWriter(file);
 
 
-       for (int t = 0; t < motorID.length; t++){
+      for (int t = 0; t < 4; t++){
 
-            /*
+
             double time = 10;
             double velocity = Robot.talonList[t].getSelectedSensorVelocity();
             double position = Robot.talonList[t].getSelectedSensorPosition();
             double error = Robot.talonList[t].getClosedLoopError();
             double setpoint = position+error;
-            double current = Robot.talonList[t].getOutputCurrent();*/
+            double current = Robot.talonList[t].getOutputCurrent();
 
-            //writer.write(t + " " + time + " " + velocity + " " + setpoint + " " + position + " " + error + " " + current + "\n");
-      //      writer.write("1 141 161 111 111 111 143\n");
-       // }
-
-        for (int J = 0; J < motorID.length; J++){
+            writer.write(t + " " + time + " " + velocity + " " + setpoint + " " + position + " " + error + " " + current + "\n");
+        }
+/*
+        for (int J = 0; J < 4; J++){
             writer.write(J + " " + J*2 + " " + "161 111 111 111 143\n");
             writer.write(J + " " + J*3 + " " + "161 111 111 111 143\n");
             writer.write(J + " " + J*4 + " " + "161 111 111 111 143\n");
             writer.write(J + " " + J*5 + " " + "161 111 111 111 143\n");
         }
+
+ */
 
         writer.flush();
         writer.close();
@@ -72,5 +73,5 @@ public class WriteToFile {
 
         */
     }
-}}
+}
 
