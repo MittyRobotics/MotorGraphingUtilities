@@ -22,21 +22,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Robot extends TimedRobot {
-  private DifferentialDrive m_myRobot;
   private Joystick m_leftStick;
   private Joystick m_rightStick;
 
-  static WPI_TalonSRX[] talonList;
+  static WPI_TalonSRX[] talonList = new WPI_TalonSRX[4];
 
   @Override
   public void robotInit() {
     m_leftStick = new Joystick(0);
     m_rightStick = new Joystick(1);
 
-    talonList[0] = new WPI_TalonSRX(0);
-    talonList[1] = new WPI_TalonSRX(1);
-    talonList[2] = new WPI_TalonSRX(2);
-    talonList[3] = new WPI_TalonSRX(3);
+    talonList[0] = new WPI_TalonSRX(10);
+    talonList[1] = new WPI_TalonSRX(11);
+    talonList[2] = new WPI_TalonSRX(12);
+    talonList[3] = new WPI_TalonSRX(13);
     /*talonList[4] = new WPI_TalonSRX(10);
     talonList[5] = new WPI_TalonSRX(11);
     talonList[6] = new WPI_TalonSRX(12);
@@ -53,10 +52,17 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic(){
     //this code will run once per loop in teleop mode, dont do anything here unless you want it to loop
 
-    try {
-      WriteToFile.main();
-    } catch (IOException e) {
-      e.printStackTrace();
+//    try {
+//      WriteToFile.main();
+//    } catch (IOException e) {
+//      e.printStackTrace();
+//    }
+    if (0.05 < Math.abs(m_leftStick.getY())) {
+      talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, m_leftStick.getY());
+      talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, m_leftStick.getY());
+    } else {
+      talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
+      talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
     }
   }
 }
