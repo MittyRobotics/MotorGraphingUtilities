@@ -32,10 +32,10 @@ public class Robot extends TimedRobot {
     m_leftStick = new Joystick(0);
     m_rightStick = new Joystick(1);
 
-    talonList[0] = new WPI_TalonSRX(10);
-    talonList[1] = new WPI_TalonSRX(11);
-    talonList[2] = new WPI_TalonSRX(12);
-    talonList[3] = new WPI_TalonSRX(13);
+    talonList[0] = new WPI_TalonSRX(18);
+    talonList[1] = new WPI_TalonSRX(19);
+  //  talonList[2] = new WPI_TalonSRX(12);
+  //  talonList[3] = new WPI_TalonSRX(13);
     /*talonList[4] = new WPI_TalonSRX(10);
     talonList[5] = new WPI_TalonSRX(11);
     talonList[6] = new WPI_TalonSRX(12);
