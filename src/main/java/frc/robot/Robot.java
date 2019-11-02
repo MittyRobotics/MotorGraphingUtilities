@@ -59,10 +59,24 @@ public class Robot extends TimedRobot {
 //    }
     if (0.05 < Math.abs(m_leftStick.getY())) {
       talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, m_leftStick.getY());
-      talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, m_leftStick.getY());
+      //System.out.println(talonList[0].getSelectedSensorVelocity());
+
+      double velocity = Robot.talonList[0].getSelectedSensorVelocity();
+      double position = Robot.talonList[0].getSelectedSensorPosition();
+      double error = Robot.talonList[0].getClosedLoopError();
+      double setpoint = position+error;
+      double current = Robot.talonList[0].getOutputCurrent();
+
+      System.out.println("Velocity: " + velocity);
+      System.out.println("Position: " + position);
+      System.out.println("Error: " + error);
+      System.out.println("Setpoint: " + setpoint);
+      System.out.println("Current: " + current);
+
+     // talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, m_leftStick.getY());
     } else {
       talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
-      talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
+   //   talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
     }
   }
 }
