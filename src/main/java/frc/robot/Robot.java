@@ -25,14 +25,22 @@ public class Robot extends TimedRobot {
   private Joystick m_leftStick;
   private Joystick m_rightStick;
 
+  public ArrayList<Double> velocityList = new ArrayList<Double>();
+  public ArrayList<Double> positionList = new ArrayList<Double>();
+  public ArrayList<Double> errorList = new ArrayList<Double>();
+  public ArrayList<Double> setpointList = new ArrayList<Double>();
+  public ArrayList<Double> currentList = new ArrayList<Double>();
+
   static WPI_TalonSRX[] talonList = new WPI_TalonSRX[1];
+
+  int printvalue = 0;
 
   @Override
   public void robotInit() {
     m_leftStick = new Joystick(0);
     m_rightStick = new Joystick(1);
 
-    talonList[0] = new WPI_TalonSRX(0);
+    talonList[0] = new WPI_TalonSRX(1);
     //talonList[1] = new WPI_TalonSRX(1);
     //talonList[2] = new WPI_TalonSRX(12);
     //talonList[3] = new WPI_TalonSRX(13);
@@ -49,7 +57,7 @@ public class Robot extends TimedRobot {
     //write your stuff here, it will execute once when the robot is enabled in teleop mode
   }
   @Override
-  public void teleopPeriodic(){
+  public void teleopPeriodic() {
     //this code will run once per loop in teleop mode, dont do anything here unless you want it to loop
 
 //    try {
@@ -57,27 +65,38 @@ public class Robot extends TimedRobot {
 //    } catch (IOException e) {
 //      e.printStackTrace();
 //    }
+
+    double velocity = talonList[0].getSelectedSensorVelocity();
+    double position = talonList[0].getSelectedSensorPosition();
+    double error = talonList[0].getClosedLoopError();
+    double setpoint = position+error;
+    double current = talonList[0].getOutputCurrent();
+
+    velocityList.add(velocity);
+    positionList.add(position);
+    errorList.add(error);
+    setpointList.add(setpoint);
+    currentList.add(current);
+
+
+    System.out.println("Velocity: " + velocityList.get(printvalue));
+    System.out.println("Position: " + positionList.get(printvalue));
+    System.out.println("Error: " + errorList.get(printvalue));
+    System.out.println("Setpoint: " + setpointList.get(printvalue));
+    System.out.println("Current: " + currentList.get(printvalue));
+
+
+    // talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, m_leftStick.getY());
+
     if (0.05 < Math.abs(m_leftStick.getY())) {
       talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, m_leftStick.getY());
       //System.out.println(talonList[0].getSelectedSensorVelocity());
-
-      double velocity = Robot.talonList[0].getSelectedSensorVelocity();
-      double position = Robot.talonList[0].getSelectedSensorPosition();
-      double error = Robot.talonList[0].getClosedLoopError();
-      double setpoint = position+error;
-      double current = Robot.talonList[0].getOutputCurrent();
-
-      System.out.println("Velocity: " + velocity);
-      System.out.println("Position: " + position);
-      System.out.println("Error: " + error);
-      System.out.println("Setpoint: " + setpoint);
-      System.out.println("Current: " + current);
-
-     // talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, m_leftStick.getY());
     } else {
       talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
    //   talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
     }
+    printvalue = printvalue + 1;
+
   }
 }
 
