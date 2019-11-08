@@ -25,11 +25,11 @@ public class Robot extends TimedRobot {
   private Joystick m_leftStick;
   private Joystick m_rightStick;
 
-  public ArrayList<Double> velocityList = new ArrayList<Double>();
-  public ArrayList<Double> positionList = new ArrayList<Double>();
-  public ArrayList<Double> errorList = new ArrayList<Double>();
-  public ArrayList<Double> setpointList = new ArrayList<Double>();
-  public ArrayList<Double> currentList = new ArrayList<Double>();
+  public static ArrayList<Double> velocityList = new ArrayList<Double>();
+  public static ArrayList<Double> positionList = new ArrayList<Double>();
+  public static ArrayList<Double> errorList = new ArrayList<Double>();
+  public static ArrayList<Double> setpointList = new ArrayList<Double>();
+  public static ArrayList<Double> currentList = new ArrayList<Double>();
 
   static WPI_TalonSRX[] talonList = new WPI_TalonSRX[1];
 
@@ -96,6 +96,14 @@ public class Robot extends TimedRobot {
    //   talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
     }
     printvalue = printvalue + 1;
+
+    if (m_leftStick.getTriggerPressed()) {
+      try {
+        WriteToFile.main();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
 
   }
 }

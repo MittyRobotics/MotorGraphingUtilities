@@ -1,5 +1,7 @@
 package frc.robot;
 import java.io.*;
+import java.util.ArrayList;
+import frc.robot.Robot.*;
 import frc.Graphing.*;
 public class WriteToFile {
 
@@ -7,7 +9,7 @@ public class WriteToFile {
 
     public static int[] motorID = new int[0];
 
-    public static void main()throws IOException {
+    public static void main() throws IOException {
         // creates the file
         if (!file.exists()) {
             file.createNewFile();
@@ -33,17 +35,31 @@ public class WriteToFile {
         FileWriter writer = new FileWriter(file);
 
 
-      for (int t = 0; t < 4; t++){
+      for (int t = 0; t < 1; t++){
 
 
             double time = 10;
+
+            ArrayList<Double> velocity = Robot.velocityList;
+            ArrayList<Double> position = Robot.positionList;
+            ArrayList<Double> error = Robot.errorList;
+            ArrayList<Double> setpoint = Robot.setpointList;
+            ArrayList<Double> current = Robot.currentList;
+
+            for (int n = 0; n <= velocity.size(); n++) {
+                writer.write(t + " " + time + " " + velocity.get(n) + " " + setpoint.get(n) + " " + position.get(n) + " " + error.get(n) + " " + current.get(n) + "\n");
+            }
+
+            /*
             double velocity = Robot.talonList[t].getSelectedSensorVelocity();
             double position = Robot.talonList[t].getSelectedSensorPosition();
             double error = Robot.talonList[t].getClosedLoopError();
             double setpoint = position+error;
             double current = Robot.talonList[t].getOutputCurrent();
 
-            writer.write(t + " " + time + " " + velocity + " " + setpoint + " " + position + " " + error + " " + current + "\n");
+             */
+
+            //writer.write(t + " " + time + " " + velocity + " " + setpoint + " " + position + " " + error + " " + current + "\n");
         }
 /*
         for (int J = 0; J < 4; J++){
