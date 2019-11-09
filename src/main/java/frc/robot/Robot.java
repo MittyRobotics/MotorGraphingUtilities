@@ -89,7 +89,7 @@ public class Robot extends TimedRobot {
     // talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, m_leftStick.getY());
 
     if (0.05 < Math.abs(m_leftStick.getY())) {
-      talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, m_leftStick.getY());
+      talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, (m_leftStick.getY()/3));
       //System.out.println(talonList[0].getSelectedSensorVelocity());
     } else {
       talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
@@ -99,6 +99,7 @@ public class Robot extends TimedRobot {
 
     if (m_leftStick.getTriggerPressed()) {
       try {
+        System.out.println("TRIGGER PRESSED");
         WriteToFile.main();
       } catch (IOException e) {
         e.printStackTrace();

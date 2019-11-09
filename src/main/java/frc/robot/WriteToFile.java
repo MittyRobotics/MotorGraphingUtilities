@@ -1,18 +1,21 @@
 package frc.robot;
 import java.io.*;
 import java.util.ArrayList;
-import frc.robot.Robot.*;
-import frc.Graphing.*;
+
 public class WriteToFile {
 
-    public static File file = new File("RobotText.txt");
+    public static File file;
 
     public static int[] motorID = new int[0];
 
-    public static void main() throws IOException {
-        // creates the file
-        if (!file.exists()) {
-            file.createNewFile();
+    public static void msain() throws IOException{
+        file = new File(
+//            "C:\\Users\\natpi\\Documents\\GitHub\\MotorGraphingUtilities\\src\\main\\java\\" +
+                "RobotText.txt");
+//         creates the file
+        if (file.exists()) {
+            System.out.println("FILE EXISTS");
+           // file.createNewFile();
         }
 
         /*
@@ -32,10 +35,16 @@ public class WriteToFile {
 
         // code to write robot values to file (work in progress)
 
-        FileWriter writer = new FileWriter(file);
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(file);
+        } catch (IOException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
 
 
-      for (int t = 0; t < 1; t++){
+        for (int t = 0; t < 1; t++){
 
 
             double time = 10;
@@ -47,7 +56,11 @@ public class WriteToFile {
             ArrayList<Double> current = Robot.currentList;
 
             for (int n = 0; n <= velocity.size(); n++) {
-                writer.write(t + " " + time + " " + velocity.get(n) + " " + setpoint.get(n) + " " + position.get(n) + " " + error.get(n) + " " + current.get(n) + "\n");
+                try {
+                    writer.write(t + " " + time + " " + velocity.get(n) + " " + setpoint.get(n) + " " + position.get(n) + " " + error.get(n) + " " + current.get(n) + "\n");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
             /*
@@ -71,8 +84,16 @@ public class WriteToFile {
 
  */
 
-        writer.flush();
-        writer.close();
+        try {
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
 
