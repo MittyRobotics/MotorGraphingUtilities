@@ -1,22 +1,35 @@
 package frc.robot;
 import java.io.*;
 import java.util.ArrayList;
+import frc.robot.Robot.*;
+import frc.Graphing.*;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class WriteToFile {
 
-    public static File file;
+    public static File file = new File("RobotText.txt");
 
     public static int[] motorID = new int[0];
 
-    public static void msain() throws IOException{
-        file = new File(
-//            "C:\\Users\\natpi\\Documents\\GitHub\\MotorGraphingUtilities\\src\\main\\java\\" +
-                "RobotText.txt");
-//         creates the file
-        if (file.exists()) {
-            System.out.println("FILE EXISTS");
-           // file.createNewFile();
-        }
+    private static final int BUFFER_SIZE = 4096;
+
+    public static void main() throws IOException {
+        // creates the file
+
+        String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
+        String host = "www.myserver.com";
+        String user = "tom";
+        String pass = "secret";
+        String filePath = "E:/Work/Project.zip";
+        String uploadPath = "/MyProjects/archive/Project.zip";
+
+        ftpUrl = String.format(ftpUrl, user, pass, host, uploadPath);
+        System.out.println("Upload URL: " + ftpUrl);
 
         /*
         // creates a FileWriter Object
@@ -35,13 +48,7 @@ public class WriteToFile {
 
         // code to write robot values to file (work in progress)
 
-        FileWriter writer = null;
-        try {
-            writer = new FileWriter(file);
-        } catch (IOException e) {
-            System.out.println("FAIL");
-            e.printStackTrace();
-        }
+        FileWriter writer = new FileWriter(file);
 
 
         for (int t = 0; t < 1; t++){
@@ -56,11 +63,7 @@ public class WriteToFile {
             ArrayList<Double> current = Robot.currentList;
 
             for (int n = 0; n <= velocity.size(); n++) {
-                try {
-                    writer.write(t + " " + time + " " + velocity.get(n) + " " + setpoint.get(n) + " " + position.get(n) + " " + error.get(n) + " " + current.get(n) + "\n");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                writer.write(t + " " + time + " " + velocity.get(n) + " " + setpoint.get(n) + " " + position.get(n) + " " + error.get(n) + " " + current.get(n) + "\n");
             }
 
             /*
@@ -84,16 +87,8 @@ public class WriteToFile {
 
  */
 
-        try {
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        writer.flush();
+        writer.close();
 
 
 
