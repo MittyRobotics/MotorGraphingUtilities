@@ -12,15 +12,19 @@ import java.net.URLConnection;
 
 public class WriteToFile {
 
-    public static File file = new File("RobotText.txt");
+    public static File file = new File("/home/lvuser/RobotText.txt");
 
+    /*
     public static int[] motorID = new int[0];
 
     private static final int BUFFER_SIZE = 4096;
 
+     */
+
     public static void main() throws IOException {
         // creates the file
 
+        /*
         String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
         String host = "www.myserver.com";
         String user = "tom";
@@ -31,8 +35,13 @@ public class WriteToFile {
         ftpUrl = String.format(ftpUrl, user, pass, host, uploadPath);
         System.out.println("Upload URL: " + ftpUrl);
 
-        /*
+         */
+
+
+
+
         // creates a FileWriter Object
+        file.createNewFile();
         FileWriter writer = new FileWriter(file);
 
         // Writes the content to the file
@@ -43,17 +52,17 @@ public class WriteToFile {
         writer.write("3 4 1242 0182 546 2413 41\n");
         writer.flush();
         writer.close();
-        */
+
 
 
         // code to write robot values to file (work in progress)
 
-        FileWriter writer = new FileWriter(file);
+   //     FileWriter writer = new FileWriter(file);
 
 
-        for (int t = 0; t < 1; t++){
+      //  for (int t = 0; t < 1; t++){
 
-
+/*
             double time = 10;
 
             ArrayList<Double> velocity = Robot.velocityList;
@@ -66,6 +75,8 @@ public class WriteToFile {
                 writer.write(t + " " + time + " " + velocity.get(n) + " " + setpoint.get(n) + " " + position.get(n) + " " + error.get(n) + " " + current.get(n) + "\n");
             }
 
+ */
+
             /*
             double velocity = Robot.talonList[t].getSelectedSensorVelocity();
             double position = Robot.talonList[t].getSelectedSensorPosition();
@@ -76,7 +87,7 @@ public class WriteToFile {
              */
 
             //writer.write(t + " " + time + " " + velocity + " " + setpoint + " " + position + " " + error + " " + current + "\n");
-        }
+        //}
 /*
         for (int J = 0; J < 4; J++){
             writer.write(J + " " + J*2 + " " + "161 111 111 111 143\n");
@@ -86,11 +97,12 @@ public class WriteToFile {
         }
 
  */
-
+/*
         writer.flush();
         writer.close();
 
 
+ */
 
 
        /*
