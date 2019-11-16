@@ -75,7 +75,7 @@ public class WriteToFile {
             ArrayList<Double> current = Robot.currentList;
 
             for (int n = 0; n < velocity.size(); n++) {
-                writer.write(t + " " + velocity.size() + " " + velocity.get(n) + " " + setpoint.get(n) + " " + position.get(n) + " " + error.get(n) + " " + current.get(n) + "\n");
+                writer.write(t + " " + n + " " + velocity.get(n) + " " + setpoint.get(n) + " " + position.get(n) + " " + error.get(n) + " " + current.get(n) + "\n");
             }
 
 
