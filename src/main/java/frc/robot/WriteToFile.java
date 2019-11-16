@@ -41,11 +41,18 @@ public class WriteToFile {
 
 
         // creates a FileWriter Object
-        file.createNewFile();
+        if (!file.exists()) {
+            file.createNewFile();
+        } else {
+            file.delete();
+            file.createNewFile();
+            System.out.println("FILE ALREADY EXISTS");
+        }
+
         FileWriter writer = new FileWriter(file);
 
         // Writes the content to the file
-        writer.write("1 1 32 092 234 243 11\n");
+        /*writer.write("1 1 32 092 234 243 11\n");
         writer.write("1 2 87 789 1111 7564 78\n");
         writer.write("4 2 232 242 4214 241 41\n");
         writer.write("2 3 098 2 34 1244 124 4\n");
@@ -53,16 +60,12 @@ public class WriteToFile {
         writer.flush();
         writer.close();
 
+         */
 
 
-        // code to write robot values to file (work in progress)
-
-   //     FileWriter writer = new FileWriter(file);
+        for (int t = 1; t < 2; t++){
 
 
-      //  for (int t = 0; t < 1; t++){
-
-/*
             double time = 10;
 
             ArrayList<Double> velocity = Robot.velocityList;
@@ -71,23 +74,15 @@ public class WriteToFile {
             ArrayList<Double> setpoint = Robot.setpointList;
             ArrayList<Double> current = Robot.currentList;
 
-            for (int n = 0; n <= velocity.size(); n++) {
-                writer.write(t + " " + time + " " + velocity.get(n) + " " + setpoint.get(n) + " " + position.get(n) + " " + error.get(n) + " " + current.get(n) + "\n");
+            for (int n = 0; n < velocity.size(); n++) {
+                writer.write(t + " " + velocity.size() + " " + velocity.get(n) + " " + setpoint.get(n) + " " + position.get(n) + " " + error.get(n) + " " + current.get(n) + "\n");
             }
 
- */
 
-            /*
-            double velocity = Robot.talonList[t].getSelectedSensorVelocity();
-            double position = Robot.talonList[t].getSelectedSensorPosition();
-            double error = Robot.talonList[t].getClosedLoopError();
-            double setpoint = position+error;
-            double current = Robot.talonList[t].getOutputCurrent();
 
-             */
 
             //writer.write(t + " " + time + " " + velocity + " " + setpoint + " " + position + " " + error + " " + current + "\n");
-        //}
+        }
 /*
         for (int J = 0; J < 4; J++){
             writer.write(J + " " + J*2 + " " + "161 111 111 111 143\n");
@@ -97,12 +92,8 @@ public class WriteToFile {
         }
 
  */
-/*
         writer.flush();
         writer.close();
-
-
- */
 
 
        /*
