@@ -7,6 +7,9 @@
 
 package frc.robot;
 
+import com.revrobotics.CANPIDController;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel;
 import frc.robot.WriteToFile;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -36,10 +39,13 @@ public class Robot extends TimedRobot {
   public static ArrayList<Double> setpointList = new ArrayList<Double>();
   public static ArrayList<Double> currentList = new ArrayList<Double>();
 
+
+
   static WPI_TalonSRX[] talonList = new WPI_TalonSRX[1];
 
   int printvalue = 0;
 
+  CANSparkMax leftSpark = new CANSparkMax(1, CANSparkMaxLowLevel.MotorType.kBrushless);
 
 
     @Override
@@ -52,6 +58,7 @@ public class Robot extends TimedRobot {
     m_rightStick = new Joystick(1);
 
     talonList[0] = new WPI_TalonSRX(1);
+
 
 
       //talonList[1] = new WPI_TalonSRX(1);
@@ -87,14 +94,22 @@ public class Robot extends TimedRobot {
 //    } catch (IOException e) {
 //      e.printStackTrace();
 //    }
-
-
-
-        double velocity = talonList[0].getSelectedSensorVelocity();
-        double position = talonList[0].getSelectedSensorPosition();
-        double error = talonList[0].getClosedLoopError();
+//        CANPIDController controller = new CANPIDController(leftSpark);
+//        controller.setP(0);
+//        controller.setI(0);
+//        controller.setD(0);
+        double velocity = leftSpark.getEncoder().getVelocity();
+        double position = leftSpark.getEncoder().getPosition();
+//        double error = controller.getSmartMotionAllowedClosedLoopError(0);
+        double error = 0;
         double setpoint = position+error;
-        double current = talonList[0].getOutputCurrent();
+        double current = leftSpark.getOutputCurrent();
+
+//        double velocity = talonList[0].getSelectedSensorVelocity();
+//        double position = talonList[0].getSelectedSensorPosition();
+//        double error = talonList[0].getClosedLoopError();
+//        double setpoint = position+error;
+//        double current = talonList[0].getOutputCurrent();
 
         velocityList.add(velocity);
         positionList.add(position);
@@ -113,10 +128,15 @@ public class Robot extends TimedRobot {
         // talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, m_leftStick.getY());
 
         if (0.05 < Math.abs(m_leftStick.getY())) {
-          talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, (m_leftStick.getY()/3));
+            leftSpark.set(m_leftStick.getY()/3);
+
+
+            //talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, (m_leftStick.getY()/3));
           //System.out.println(talonList[0].getSelectedSensorVelocity());
         } else {
-          talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
+            leftSpark.stopMotor();
+
+            //  talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
        //   talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
         }
         printvalue = printvalue + 1;
