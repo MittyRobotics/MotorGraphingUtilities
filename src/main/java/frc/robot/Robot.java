@@ -45,7 +45,11 @@ public class Robot extends TimedRobot {
 
   int printvalue = 0;
 
-  CANSparkMax leftSpark = new CANSparkMax(1, CANSparkMaxLowLevel.MotorType.kBrushless);
+  CANSparkMax leftSpark1 = new CANSparkMax(1, CANSparkMaxLowLevel.MotorType.kBrushless);
+  CANSparkMax leftSpark2 = new CANSparkMax(2, CANSparkMaxLowLevel.MotorType.kBrushless);
+  CANSparkMax rightSpark1 = new CANSparkMax(3, CANSparkMaxLowLevel.MotorType.kBrushless);
+  CANSparkMax rightSpark2 = new CANSparkMax(4, CANSparkMaxLowLevel.MotorType.kBrushless);
+
 
 
     @Override
@@ -98,12 +102,12 @@ public class Robot extends TimedRobot {
 //        controller.setP(0);
 //        controller.setI(0);
 //        controller.setD(0);
-        double velocity = leftSpark.getEncoder().getVelocity();
-        double position = leftSpark.getEncoder().getPosition();
+        double velocity = leftSpark1.getEncoder().getVelocity();
+        double position = leftSpark1.getEncoder().getPosition();
 //        double error = controller.getSmartMotionAllowedClosedLoopError(0);
         double error = 0;
         double setpoint = position+error;
-        double current = leftSpark.getOutputCurrent();
+        double current = leftSpark1.getOutputCurrent();
 
 //        double velocity = talonList[0].getSelectedSensorVelocity();
 //        double position = talonList[0].getSelectedSensorPosition();
@@ -128,16 +132,27 @@ public class Robot extends TimedRobot {
         // talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, m_leftStick.getY());
 
         if (0.05 < Math.abs(m_leftStick.getY())) {
-            leftSpark.set(m_leftStick.getY()/3);
-
-
+            leftSpark1.set(m_leftStick.getY()/3);
+            leftSpark2.set(m_leftStick.getY()/3);
             //talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, (m_leftStick.getY()/3));
           //System.out.println(talonList[0].getSelectedSensorVelocity());
         } else {
-            leftSpark.stopMotor();
-
+            leftSpark1.stopMotor();
+            leftSpark2.stopMotor();
             //  talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
        //   talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
+        }
+
+        if (0.05 < Math.abs(m_rightStick.getY())) {
+            rightSpark1.set(m_rightStick.getY()/3);
+            rightSpark2.set(m_rightStick.getY()/3);
+            //talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, (m_leftStick.getY()/3));
+            //System.out.println(talonList[0].getSelectedSensorVelocity());
+        } else {
+            rightSpark1.stopMotor();
+            rightSpark2.stopMotor();
+            //  talonList[0].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
+            //   talonList[1].set(com.ctre.phoenix.motorcontrol.ControlMode.PercentOutput, 0);
         }
         printvalue = printvalue + 1;
 
